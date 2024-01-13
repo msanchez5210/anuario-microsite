@@ -55,12 +55,37 @@ window.onload = () => {
         }
     };
 
+    const mostrarDetallesProyecto = (proyecto) => {
+        const proyectoId = proyecto.id;
+    
+        const urlParams = new URLSearchParams();
+        urlParams.set('id', proyectoId);
+    
+        const url = `detalles.html?${urlParams.toString()}`;
+    
+        // Redirige a la nueva página con los parámetros
+        window.location.href = url;
+    };
+    
+
     fetch('data/anuario.json')
         .then(res => res.json())
         .then(data => {
             proyectosData = data;
             cargarProyectos();
         });
-
+    
     verMasBtn.addEventListener('click', cargarProyectos);
+
+    
+    cajaProyectos.addEventListener('click', (event) => {
+        const clickedProyecto = event.target.closest('.proyecto');
+    
+        if (clickedProyecto) {
+            const proyectoIndex = Array.from(cajaProyectos.children).indexOf(clickedProyecto);
+            const proyecto = proyectosData[proyectoIndex];
+    
+            mostrarDetallesProyecto(proyecto);
+        }
+    });
 };

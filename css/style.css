@@ -205,6 +205,9 @@ body {
 body {
   background-color: black;
 }
+body .container_detalles {
+  padding: 127px;
+}
 
 footer {
   background-color: #FFED00;
