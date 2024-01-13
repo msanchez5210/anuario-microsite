@@ -1,10 +1,25 @@
 window.onload = () => {
+
+    //Menú desplegable
+    const menuIcon = document.querySelector('.material-symbols-outlined.menu');
+    const closeIcon = document.querySelector('.material-symbols-outlined.close');
+    const menu = document.querySelector('.menu_desplegable');
+
+    menuIcon.addEventListener('click', () => {
+        menu.style.display = 'flex';
+    });
+
+    closeIcon.addEventListener('click', () => {
+        menu.style.display = 'none';
+    });
+    
+    
+    //Proyectos
     let cajaProyectos = document.querySelector(".caja");
-    let verMasBtn = document.getElementById("#boton_vermas");
+    let verMasBtn = document.getElementById("boton_vermas"); 
 
     let proyectosData = [];
 
-    // Función para cargar proyectos
     const cargarProyectos = () => {
         const proyectosPorCargar = proyectosData.splice(0, 8);
 
@@ -40,7 +55,6 @@ window.onload = () => {
         }
     };
 
-    // Cargar datos desde el archivo JSON
     fetch('data/anuario.json')
         .then(res => res.json())
         .then(data => {
@@ -48,6 +62,5 @@ window.onload = () => {
             cargarProyectos();
         });
 
-    // Agregar evento click al botón
     verMasBtn.addEventListener('click', cargarProyectos);
 };
