@@ -1,5 +1,5 @@
+//Al cargar la nueva página
 window.onload = () => {
-    // Obtén el valor del ID del proyecto de los parámetros de la URL
     const urlParams = new URLSearchParams(window.location.search);
     const proyectoId = urlParams.get('id');
 
@@ -8,7 +8,7 @@ window.onload = () => {
         fetch('data/anuario.json')
             .then(res => res.json())
             .then(data => {
-                const proyecto = data.find(item => item.id === proyectoId);
+                const proyecto = data.find(item => item.id === parseInt(proyectoId));
 
                 // Ahora, puedes trabajar con los detalles del proyecto en esta página
                 console.log('Id:', proyecto);
@@ -23,23 +23,40 @@ window.onload = () => {
 
     function mostrarDetalles(proyecto) {
         const containerDetalles = document.querySelector('.container_detalles');
-    
-        // Asegurarse de que haya un proyecto y tenga la propiedad 'titulo'
-        if (proyecto && proyecto.titulo) {
-            // Crear elementos HTML para mostrar la información
-            const tituloElement = document.createElement('h2');
-            tituloElement.textContent = proyecto.titulo;
-    
-            // ... (otras partes de tu código)
-    
-            // Agregar los elementos al contenedor
-            containerDetalles.appendChild(tituloElement);
-    
-            // ... (otras partes de tu código)
-        } else {
-            console.error('El objeto del proyecto no tiene la propiedad "titulo" o es nulo/undefined.');
-        }
-    }
-    
-    
+
+        // Crear elementos HTML y asignar contenido dinámico
+        const titulo = document.createElement('h2');
+        titulo.textContent = proyecto.titulo;
+
+        const subtitulo = document.createElement('p');
+        subtitulo.textContent = proyecto.subtitulo;
+
+        const descripcion = document.createElement('p');
+        descripcion.textContent = proyecto.descripcion;
+
+        // Puedes seguir creando más elementos y asignando contenido
+
+        // Agregar elementos al contenedor
+        containerDetalles.appendChild(titulo);
+        containerDetalles.appendChild(subtitulo);
+        containerDetalles.appendChild(descripcion);
+        
+        // Aquí puedes seguir agregando más elementos según tus necesidades
+
+        // Agregar imágenes
+        proyecto.imagenes.split(',').forEach((imagenURL, index) => {
+            const imagen = document.createElement('img');
+            imagen.src = imagenURL.trim();
+            imagen.alt = `Imagen ${index + 1}`;
+            containerDetalles.appendChild(imagen);
+        });
+
+        // Agregar enlace a doc_info
+        const enlaceDocInfo = document.createElement('a');
+        enlaceDocInfo.href = proyecto.doc_info;
+        enlaceDocInfo.textContent = 'Ver Documento de Información';
+        containerDetalles.appendChild(enlaceDocInfo);
+    };
+
+
 };
