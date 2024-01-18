@@ -18,7 +18,6 @@ window.onload = () => {
     const proyectoId = urlParams.get('id');
 
     if (proyectoId) {
-        // Si hay un ID de proyecto, realiza la carga dinámica
         fetch('data/anuario.json')
             .then(res => res.json())
             .then(data => {
@@ -27,7 +26,6 @@ window.onload = () => {
                 mostrarDetalles(proyecto);
             });
     } else {
-        // Si no hay un ID de proyecto, maneja el caso en consecuencia
         console.error('No se proporcionó un ID de proyecto en la URL.');
     }
 
@@ -46,12 +44,47 @@ window.onload = () => {
         titulosDetalles.appendChild(tituloProyecto);
         titulosDetalles.appendChild(subtituloProyecto);
 
+        const descripcion = document.createElement('div');
+        descripcion.classList.add('descripcion_detalles');
+
+        const descripcionProyecto = document.createElement('p');
+        descripcionProyecto.textContent = proyectoIndex.descripcion;
+
+        descripcion.appendChild(descripcionProyecto);
+        contenidoArriba.appendChild(descripcion);
+
         const imagenes = proyectoIndex.imagenes.split(',');
         const cantidadImagenes = imagenes.length;
 
         
 
         switch (cantidadImagenes) {
+            case 6:
+                for (let i = 0; i < 3; i++) {
+                    const contenedor = document.createElement('div');
+                    contenedor.classList.add('imagen-contenedor');
+    
+                    const imagen = document.createElement('img');
+                    imagen.src = imagenes[i].trim();
+                    imagen.alt = `Imagen ${i + 1}`;
+    
+                    contenedor.appendChild(imagen);
+                    contenidoArriba.appendChild(contenedor);
+                }
+    
+                for (let i = 3; i < 6; i++) {
+                    const contenedor = document.createElement('div');
+                    contenedor.classList.add('imagen-contenedor');
+    
+                    const imagen = document.createElement('img');
+                    imagen.src = imagenes[i].trim();
+                    imagen.alt = `Imagen ${i + 1}`;
+    
+                    contenedor.appendChild(imagen);
+                    contenidoAbajo.appendChild(contenedor);
+                }
+                break;
+    
             case 5:
                 for (let i = 0; i < 3; i++) {
                     const contenedor = document.createElement('div');
@@ -66,32 +99,6 @@ window.onload = () => {
                 }
     
                 for (let i = 3; i < 5; i++) {
-                    const contenedor = document.createElement('div');
-                    contenedor.classList.add('imagen-contenedor');
-    
-                    const imagen = document.createElement('img');
-                    imagen.src = imagenes[i].trim();
-                    imagen.alt = `Imagen ${i + 1}`;
-    
-                    contenedor.appendChild(imagen);
-                    contenidoAbajo.appendChild(contenedor);
-                }
-                break;
-    
-            case 4:
-                for (let i = 0; i < 2; i++) {
-                    const contenedor = document.createElement('div');
-                    contenedor.classList.add('imagen-contenedor');
-    
-                    const imagen = document.createElement('img');
-                    imagen.src = imagenes[i].trim();
-                    imagen.alt = `Imagen ${i + 1}`;
-    
-                    contenedor.appendChild(imagen);
-                    contenidoArriba.appendChild(contenedor);
-                }
-    
-                for (let i = 2; i < 4; i++) {
                     const contenedor = document.createElement('div');
                     contenedor.classList.add('imagen-contenedor');
     
@@ -133,7 +140,15 @@ window.onload = () => {
                 break;
     
             default:
-                // Manejar otros casos si es necesario
+                const contenedor = document.createElement('div');
+                contenedor.classList.add('imagen-contenedor');
+
+                const imagen = document.createElement('img');
+                imagen.src = imagenes[i].trim();
+                imagen.alt = `Imagen ${i + 1}`;
+
+                contenedor.appendChild(imagen);
+                contenidoArriba.appendChild(contenedor);
                 break;
         }
 

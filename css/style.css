@@ -11,40 +11,15 @@
   height: 127px;
   box-sizing: border-box;
   z-index: 1;
+  font-family: "Noto Sans Mono", monospace;
+}
+.navegador .logoesd {
+  height: 85px;
+}
+.navegador .iconos_nav .material-symbols-outlined {
+  font-size: 60px;
   box-sizing: border-box;
   z-index: 1000;
-}
-.navegador .texto_nav {
-  font-size: 18px;
-  padding: 20px 40px 20px 40px;
-}
-.navegador .texto_nav:hover {
-  cursor: pointer;
-  background-color: #584100;
-  border-radius: 5px;
-  color: white;
-}
-.navegador .logoesd {
-  height: 85px;
-}
-.navegador .iconos_nav .material-symbols-outlined {
-  font-size: 60px;
-}
-.navegador .texto_nav {
-  font-size: 18px;
-  padding: 20px 40px 20px 40px;
-}
-.navegador .texto_nav:hover {
-  cursor: pointer;
-  background-color: #584100;
-  border-radius: 5px;
-  color: white;
-}
-.navegador .logoesd {
-  height: 85px;
-}
-.navegador .iconos_nav .material-symbols-outlined {
-  font-size: 60px;
 }
 .navegador .iconos_nav .material-symbols-outlined:hover {
   cursor: pointer;
@@ -90,6 +65,7 @@
 .navegador .menu_desplegable .lista_desplegable .elementos_lista .textos_lista {
   margin-block-end: 0;
   margin-block-start: 0;
+  font-family: "Noto Sans Mono", monospace;
 }
 
 body {
@@ -173,7 +149,7 @@ body {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 20px;
   background-color: black;
-  padding: 20px 50px 20px 50px;
+  padding: 20px 120px 20px 120px;
   border-radius: 10px;
   margin: 40px 0 40px 0;
 }
@@ -210,7 +186,6 @@ body {
 }
 .container_detalles .titulos_detalles {
   font-size: 24px;
-  padding-bottom: 30px;
 }
 .container_detalles .titulos_detalles h2 {
   font-family: "Noto Sans Mono", monospace;
@@ -224,13 +199,18 @@ body {
   justify-content: space-between;
   width: 100%;
   box-sizing: border-box;
-  padding-bottom: 80px;
+  padding-bottom: 30px;
 }
 .container_detalles .contenido_arriba .imagen-contenedor {
-  width: 100%;
+  height: 338px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
 }
 .container_detalles .contenido_arriba .imagen-contenedor img {
   width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .container_detalles .contenido_abajo {
   display: flex;
@@ -238,12 +218,18 @@ body {
   justify-content: space-between;
   width: 100%;
   box-sizing: border-box;
+  padding-bottom: 30px;
 }
 .container_detalles .contenido_abajo .imagen-contenedor {
-  width: 90%;
+  height: 338px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
 }
 .container_detalles .contenido_abajo .imagen-contenedor img {
   width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 footer {
