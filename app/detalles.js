@@ -35,8 +35,20 @@ window.onload = () => {
         const containerDetalles = document.querySelector('.container_detalles');
         const contenidoArriba = document.querySelector('.contenido_arriba');
         const contenidoAbajo = document.querySelector('.contenido_abajo');    
+        const titulosDetalles = document.querySelector('.titulos_detalles');
+
+        const tituloProyecto = document.createElement('h2');
+        tituloProyecto.textContent = proyectoIndex.titulo;
+    
+        const subtituloProyecto = document.createElement('p');
+        subtituloProyecto.textContent = proyectoIndex.subtitulo;
+    
+        titulosDetalles.appendChild(tituloProyecto);
+        titulosDetalles.appendChild(subtituloProyecto);
+
         const imagenes = proyectoIndex.imagenes.split(',');
         const cantidadImagenes = imagenes.length;
+
         
 
         switch (cantidadImagenes) {
@@ -93,13 +105,31 @@ window.onload = () => {
                 break;
     
             case 3:
-                // Estructura para 3 imágenes
-                // ...
+                for (let i = 0; i < 3; i++) {
+                    const contenedor = document.createElement('div');
+                    contenedor.classList.add('imagen-contenedor');
+    
+                    const imagen = document.createElement('img');
+                    imagen.src = imagenes[i].trim();
+                    imagen.alt = `Imagen ${i + 1}`;
+    
+                    contenedor.appendChild(imagen);
+                    contenidoArriba.appendChild(contenedor);
+                }
                 break;
     
             case 2:
-                // Estructura para 2 imágenes
-                // ...
+                for (let i = 0; i < 2; i++) {
+                    const contenedor = document.createElement('div');
+                    contenedor.classList.add('imagen-contenedor');
+    
+                    const imagen = document.createElement('img');
+                    imagen.src = imagenes[i].trim();
+                    imagen.alt = `Imagen ${i + 1}`;
+    
+                    contenedor.appendChild(imagen);
+                    contenidoArriba.appendChild(contenedor);
+                }
                 break;
     
             default:
@@ -110,7 +140,8 @@ window.onload = () => {
         // Agregar enlace a doc_info
         const enlaceDocInfo = document.createElement('a');
         enlaceDocInfo.href = proyectoIndex.doc_info;
-        enlaceDocInfo.textContent = 'Ver Documento de Información';
+        enlaceDocInfo.textContent = 'Ver el documento del proyecto';
+        enlaceDocInfo.style.color = '#FFED00';
         containerDetalles.appendChild(enlaceDocInfo);
     };
 
