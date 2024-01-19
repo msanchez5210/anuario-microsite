@@ -1,9 +1,9 @@
 window.onload = () => {
 
     //Menú desplegable
-    const menuIcon = document.querySelector('.material-symbols-outlined.menu');
-    const closeIcon = document.querySelector('.material-symbols-outlined.close');
-    const menu = document.querySelector('.menu_desplegable');
+    let menuIcon = document.querySelector('.material-symbols-outlined.menu');
+    let closeIcon = document.querySelector('.material-symbols-outlined.close');
+    let menu = document.querySelector('.menu_desplegable');
 
     menuIcon.addEventListener('click', () => {
         menu.style.display = 'flex';
@@ -20,8 +20,8 @@ window.onload = () => {
 
     let proyectosData = [];
 
-    const cargarProyectos = () => {
-        const proyectosPorCargar = proyectosData.splice(0, 8);
+    let cargarProyectos = () => {
+        let proyectosPorCargar = proyectosData.splice(0, 8);
 
         proyectosPorCargar.forEach(proyecto => {
             let cadaProyecto = document.createElement('article');
@@ -55,13 +55,13 @@ window.onload = () => {
         }
     };
 
-    const mostrarDetallesProyecto = (proyecto) => {
-        const proyectoId = proyecto + 1;
+    let mostrarDetallesProyecto = (proyecto) => {
+        let proyectoId = proyecto + 1;
     
-        const urlParams = new URLSearchParams();
+        let urlParams = new URLSearchParams();
         urlParams.set('id', proyectoId);
     
-        const url = `detalles.html?${urlParams.toString()}`;
+        let url = `detalles.html?${urlParams.toString()}`;
     
         // Redirige a la nueva página con los parámetros
         window.location.href = url;
@@ -79,11 +79,11 @@ window.onload = () => {
 
     
     cajaProyectos.addEventListener('click', (event) => {
-        const clickedProyecto = event.target.closest('.proyecto');
+        let clickedProyecto = event.target.closest('.proyecto');
     
         if (clickedProyecto) {
-            const proyectoIndex = Array.from(cajaProyectos.children).indexOf(clickedProyecto);
-            const proyecto = proyectosData[proyectoIndex];
+            let proyectoIndex = Array.from(cajaProyectos.children).indexOf(clickedProyecto);
+            let proyecto = proyectosData[proyectoIndex];
     
             mostrarDetallesProyecto(proyectoIndex);
         }

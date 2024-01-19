@@ -1,10 +1,9 @@
-//Al cargar la nueva página
 window.onload = () => {
 
     //Menú desplegable
-    const menuIcon = document.querySelector('.material-symbols-outlined.menu');
-    const closeIcon = document.querySelector('.material-symbols-outlined.close');
-    const menu = document.querySelector('.menu_desplegable');
+    let menuIcon = document.querySelector('.material-symbols-outlined.menu');
+    let closeIcon = document.querySelector('.material-symbols-outlined.close');
+    let menu = document.querySelector('.menu_desplegable');
 
     menuIcon.addEventListener('click', () => {
         menu.style.display = 'flex';
@@ -21,17 +20,17 @@ window.onload = () => {
 
     //Página de detalles
 
-    const contenidoIzquierda = document.querySelector('.contenido_izquierda');
-    const contenidoDerecha = document.querySelector('.contenido_derecha');
+    let contenidoIzquierda = document.querySelector('.contenido_izquierda');
+    let contenidoDerecha = document.querySelector('.contenido_derecha');
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const proyectoId = urlParams.get('id');
+    let urlParams = new URLSearchParams(window.location.search);
+    let proyectoId = urlParams.get('id');
 
     if (proyectoId) {
         fetch('data/anuario.json')
             .then(res => res.json())
             .then(data => {
-                const proyecto = data.find(item => item.id === parseInt(proyectoId));
+                let proyecto = data.find(item => item.id === parseInt(proyectoId));
                 console.log('Id:', proyecto);
                 mostrarDetalles(proyecto);
             });
@@ -40,35 +39,35 @@ window.onload = () => {
     }
 
     function mostrarDetalles(proyectoIndex) {
-        const containerDetalles = document.querySelector('.container_detalles');
-        const titulosDetalles = document.querySelector('.titulos_detalles');
+        let containerDetalles = document.querySelector('.container_detalles');
+        let titulosDetalles = document.querySelector('.titulos_detalles');
     
         //Nombre del proyecto
-        const tituloProyecto = document.createElement('h2');
+        let tituloProyecto = document.createElement('h2');
         tituloProyecto.textContent = proyectoIndex.titulo;
         
         //Subtítulo del proyecto
-        const subtituloProyecto = document.createElement('p');
+        let subtituloProyecto = document.createElement('p');
         subtituloProyecto.classList.add('subtitulo_detalles')
         subtituloProyecto.textContent = proyectoIndex.subtitulo;
 
         //Nombre, Curso y especialidad
-        const datosAlumno = document.createElement('div');
+        let datosAlumno = document.createElement('div');
         datosAlumno.classList.add('datos_alumno');
 
-        const autorProyecto = document.createElement('p');
+        let autorProyecto = document.createElement('p');
         autorProyecto.classList.add('nombre_estudiante');
         autorProyecto.textContent = proyectoIndex.nombre_estudiante;
 
-        const correoEstudiante = document.createElement('p');
+        let correoEstudiante = document.createElement('p');
         correoEstudiante.classList.add('correo_estudiante');
         correoEstudiante.textContent = proyectoIndex.correo_estudiante;
 
-        const cursoProyecto = document.createElement('p');
+        let cursoProyecto = document.createElement('p');
         cursoProyecto.classList.add('curso');
         cursoProyecto.textContent = proyectoIndex.curso;
 
-        const especialidadProyecto = document.createElement('p');
+        let especialidadProyecto = document.createElement('p');
         especialidadProyecto.classList.add('especialidad');
         especialidadProyecto.textContent = proyectoIndex.especialidad;
 
@@ -78,11 +77,11 @@ window.onload = () => {
         datosAlumno.appendChild(especialidadProyecto);
 
         //Asignatura
-        const asignaturaProyecto = document.createElement('p');
+        let asignaturaProyecto = document.createElement('p');
         asignaturaProyecto.classList.add ('asignatura');
         asignaturaProyecto.textContent = proyectoIndex.asignatura;
 
-        const palabrasClave = document.createElement('p');
+        let palabrasClave = document.createElement('p');
         palabrasClave.classList.add('palabras_clave');
         palabrasClave.textContent = proyectoIndex.palabras_clave;
 
@@ -95,27 +94,27 @@ window.onload = () => {
         
 
     
-        const descripcion = document.createElement('div');
+        let descripcion = document.createElement('div');
         descripcion.classList.add('descripcion_detalles');
 
         //Descripción del proyecto
 
-        const descripcionProyecto = document.createElement('p');
+        let descripcionProyecto = document.createElement('p');
         descripcionProyecto.textContent = proyectoIndex.descripcion;
 
         descripcion.appendChild(descripcionProyecto);
     
         // Agrega lógica para imágenes según la plantilla
-        const imagenes = proyectoIndex.imagenes.split(',');
+        let imagenes = proyectoIndex.imagenes.split(',');
     
         if (proyectoIndex.plantilla === 1) {
             contenidoIzquierda.appendChild(descripcion);
 
             imagenes.forEach(imagen => {
-                const contenedorImg = document.createElement('div');
+                let contenedorImg = document.createElement('div');
                 contenedorImg.classList.add('contenedor_img');
     
-                const imgElement = document.createElement('img');
+                let imgElement = document.createElement('img');
                 imgElement.src = imagen.trim();
     
                 contenedorImg.appendChild(imgElement);
@@ -125,10 +124,10 @@ window.onload = () => {
             contenidoDerecha.appendChild(descripcion);
 
             imagenes.forEach(imagen => {
-                const contenedorImg = document.createElement('div');
+                let contenedorImg = document.createElement('div');
                 contenedorImg.classList.add('contenedor_img');
     
-                const imgElement = document.createElement('img');
+                let imgElement = document.createElement('img');
                 imgElement.src = imagen.trim();
     
                 contenedorImg.appendChild(imgElement);
@@ -139,7 +138,7 @@ window.onload = () => {
 
 
         // Enlace al documento del proyecto
-        const enlaceDocInfo = document.createElement('a');
+        let enlaceDocInfo = document.createElement('a');
         enlaceDocInfo.href = proyectoIndex.doc_info;
         enlaceDocInfo.textContent = 'Ver el documento del proyecto';
         enlaceDocInfo.style.color = '#FFED00';
