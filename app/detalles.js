@@ -14,6 +14,16 @@ window.onload = () => {
         menu.style.display = 'none';
     });
 
+    document.getElementById('btnInicio').addEventListener('click', function() {
+        window.location.href = 'index.html';
+    });
+
+
+    //Página de detalles
+
+    const contenidoIzquierda = document.querySelector('.contenido_izquierda');
+    const contenidoDerecha = document.querySelector('.contenido_derecha');
+
     const urlParams = new URLSearchParams(window.location.search);
     const proyectoId = urlParams.get('id');
 
@@ -31,135 +41,113 @@ window.onload = () => {
 
     function mostrarDetalles(proyectoIndex) {
         const containerDetalles = document.querySelector('.container_detalles');
-        const contenidoArriba = document.querySelector('.contenido_arriba');
-        const contenidoAbajo = document.querySelector('.contenido_abajo');    
         const titulosDetalles = document.querySelector('.titulos_detalles');
-
+    
+        //Nombre del proyecto
         const tituloProyecto = document.createElement('h2');
         tituloProyecto.textContent = proyectoIndex.titulo;
-    
+        
+        //Subtítulo del proyecto
         const subtituloProyecto = document.createElement('p');
+        subtituloProyecto.classList.add('subtitulo_detalles')
         subtituloProyecto.textContent = proyectoIndex.subtitulo;
+
+        //Nombre, Curso y especialidad
+        const datosAlumno = document.createElement('div');
+        datosAlumno.classList.add('datos_alumno');
+
+        const autorProyecto = document.createElement('p');
+        autorProyecto.classList.add('nombre_estudiante');
+        autorProyecto.textContent = proyectoIndex.nombre_estudiante;
+
+        const correoEstudiante = document.createElement('p');
+        correoEstudiante.classList.add('correo_estudiante');
+        correoEstudiante.textContent = proyectoIndex.correo_estudiante;
+
+        const cursoProyecto = document.createElement('p');
+        cursoProyecto.classList.add('curso');
+        cursoProyecto.textContent = proyectoIndex.curso;
+
+        const especialidadProyecto = document.createElement('p');
+        especialidadProyecto.classList.add('especialidad');
+        especialidadProyecto.textContent = proyectoIndex.especialidad;
+
+        datosAlumno.appendChild(autorProyecto);
+        datosAlumno.appendChild(correoEstudiante);
+        datosAlumno.appendChild(cursoProyecto);
+        datosAlumno.appendChild(especialidadProyecto);
+
+        //Asignatura
+        const asignaturaProyecto = document.createElement('p');
+        asignaturaProyecto.classList.add ('asignatura');
+        asignaturaProyecto.textContent = proyectoIndex.asignatura;
+
+        const palabrasClave = document.createElement('p');
+        palabrasClave.classList.add('palabras_clave');
+        palabrasClave.textContent = proyectoIndex.palabras_clave;
+
     
         titulosDetalles.appendChild(tituloProyecto);
         titulosDetalles.appendChild(subtituloProyecto);
+        titulosDetalles.appendChild(datosAlumno);
+        titulosDetalles.appendChild(asignaturaProyecto);
+        titulosDetalles.appendChild(palabrasClave);
+        
 
+    
         const descripcion = document.createElement('div');
         descripcion.classList.add('descripcion_detalles');
+
+        //Descripción del proyecto
 
         const descripcionProyecto = document.createElement('p');
         descripcionProyecto.textContent = proyectoIndex.descripcion;
 
         descripcion.appendChild(descripcionProyecto);
-        contenidoArriba.appendChild(descripcion);
-
+    
+        // Agrega lógica para imágenes según la plantilla
         const imagenes = proyectoIndex.imagenes.split(',');
-        const cantidadImagenes = imagenes.length;
+    
+        if (proyectoIndex.plantilla === 1) {
+            contenidoIzquierda.appendChild(descripcion);
 
-        
+            imagenes.forEach(imagen => {
+                const contenedorImg = document.createElement('div');
+                contenedorImg.classList.add('contenedor_img');
+    
+                const imgElement = document.createElement('img');
+                imgElement.src = imagen.trim();
+    
+                contenedorImg.appendChild(imgElement);
+                contenidoDerecha.appendChild(contenedorImg);
+            });
+        } else if (proyectoIndex.plantilla === 2) {
+            contenidoDerecha.appendChild(descripcion);
 
-        switch (cantidadImagenes) {
-            case 6:
-                for (let i = 0; i < 3; i++) {
-                    const contenedor = document.createElement('div');
-                    contenedor.classList.add('imagen-contenedor');
+            imagenes.forEach(imagen => {
+                const contenedorImg = document.createElement('div');
+                contenedorImg.classList.add('contenedor_img');
     
-                    const imagen = document.createElement('img');
-                    imagen.src = imagenes[i].trim();
-                    imagen.alt = `Imagen ${i + 1}`;
+                const imgElement = document.createElement('img');
+                imgElement.src = imagen.trim();
     
-                    contenedor.appendChild(imagen);
-                    contenidoArriba.appendChild(contenedor);
-                }
-    
-                for (let i = 3; i < 6; i++) {
-                    const contenedor = document.createElement('div');
-                    contenedor.classList.add('imagen-contenedor');
-    
-                    const imagen = document.createElement('img');
-                    imagen.src = imagenes[i].trim();
-                    imagen.alt = `Imagen ${i + 1}`;
-    
-                    contenedor.appendChild(imagen);
-                    contenidoAbajo.appendChild(contenedor);
-                }
-                break;
-    
-            case 5:
-                for (let i = 0; i < 3; i++) {
-                    const contenedor = document.createElement('div');
-                    contenedor.classList.add('imagen-contenedor');
-    
-                    const imagen = document.createElement('img');
-                    imagen.src = imagenes[i].trim();
-                    imagen.alt = `Imagen ${i + 1}`;
-    
-                    contenedor.appendChild(imagen);
-                    contenidoArriba.appendChild(contenedor);
-                }
-    
-                for (let i = 3; i < 5; i++) {
-                    const contenedor = document.createElement('div');
-                    contenedor.classList.add('imagen-contenedor');
-    
-                    const imagen = document.createElement('img');
-                    imagen.src = imagenes[i].trim();
-                    imagen.alt = `Imagen ${i + 1}`;
-    
-                    contenedor.appendChild(imagen);
-                    contenidoAbajo.appendChild(contenedor);
-                }
-                break;
-    
-            case 3:
-                for (let i = 0; i < 3; i++) {
-                    const contenedor = document.createElement('div');
-                    contenedor.classList.add('imagen-contenedor');
-    
-                    const imagen = document.createElement('img');
-                    imagen.src = imagenes[i].trim();
-                    imagen.alt = `Imagen ${i + 1}`;
-    
-                    contenedor.appendChild(imagen);
-                    contenidoArriba.appendChild(contenedor);
-                }
-                break;
-    
-            case 2:
-                for (let i = 0; i < 2; i++) {
-                    const contenedor = document.createElement('div');
-                    contenedor.classList.add('imagen-contenedor');
-    
-                    const imagen = document.createElement('img');
-                    imagen.src = imagenes[i].trim();
-                    imagen.alt = `Imagen ${i + 1}`;
-    
-                    contenedor.appendChild(imagen);
-                    contenidoArriba.appendChild(contenedor);
-                }
-                break;
-    
-            default:
-                const contenedor = document.createElement('div');
-                contenedor.classList.add('imagen-contenedor');
-
-                const imagen = document.createElement('img');
-                imagen.src = imagenes[i].trim();
-                imagen.alt = `Imagen ${i + 1}`;
-
-                contenedor.appendChild(imagen);
-                contenidoArriba.appendChild(contenedor);
-                break;
+                contenedorImg.appendChild(imgElement);
+                contenidoIzquierda.appendChild(contenedorImg);
+            });
         }
+    
 
-        // Agregar enlace a doc_info
+
+        // Enlace al documento del proyecto
         const enlaceDocInfo = document.createElement('a');
         enlaceDocInfo.href = proyectoIndex.doc_info;
         enlaceDocInfo.textContent = 'Ver el documento del proyecto';
         enlaceDocInfo.style.color = '#FFED00';
+        enlaceDocInfo.style.display = 'flex';
+        enlaceDocInfo.style.justifyContent = 'center';
+        enlaceDocInfo.style.paddingTop = '40px'
+
+
         containerDetalles.appendChild(enlaceDocInfo);
     };
-
-    
-
 };

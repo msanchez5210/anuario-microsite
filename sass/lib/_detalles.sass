@@ -5,43 +5,55 @@
     color: #FFED00
 
     .titulos_detalles 
-        font-size: 24px
+        font-size: 30px
+        padding-bottom: 30px
         h2
             font-family: 'Noto Sans Mono', monospace
-            font-size: 40px
+            font-size: 50px
             margin-block-start: 0
             margin-block-end: 0
+        .subtitulo_detalles
+            font-family: 'Noto Sans Mono', monospace
+        .datos_alumno
+            display: flex
+            flex-direction: row
+            align-items: baseline
+            font-size: 20px
+            .nombre_estudiante
+                font-size: 30px
+                padding-right: 50px
+            .correo_estudiante
+                padding-right: 40px
+            .curso
+                padding-right: 10px
+        .asignatura
+            font-size: 20px
+            font-style: italic
+        .palabras_clave 
+            font-size: 16px
 
-    .contenido_arriba
+    .contenido_detalles
         display: flex
         flex-direction: row
-        justify-content: space-between
-        width: 100%
-        box-sizing: border-box
-        padding-bottom: 30px
-        .imagen-contenedor
-            height: 338px
-            overflow: hidden
+        justify-content: space-around
+        .contenido_izquierda
+            padding-right: 40px
             display: flex
+            flex-direction: column
             align-items: flex-start
-            img
-                width: 100%
-                object-fit: cover
-                
+            .contenedor_img
+                width: 700px
+                overflow: hidden
+                img
+                    width: 100%
 
-            
-    .contenido_abajo
-        display: flex
-        flex-direction: row
-        justify-content: space-between
-        width: 100%
-        box-sizing: border-box
-        padding-bottom: 30px
-        .imagen-contenedor
-            height: 338px
-            overflow: hidden
+        .contenido_derecha
+            padding-right: 40px
             display: flex
+            flex-direction: column
             align-items: flex-start
-            img
-                width: 100%
-                object-fit: cover
+            .contenedor_img
+                width: 700px
+                overflow: hidden
+                img
+                    width: 100%

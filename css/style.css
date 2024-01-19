@@ -24,6 +24,16 @@
 .navegador .iconos_nav .material-symbols-outlined:hover {
   cursor: pointer;
 }
+.navegador .inicio {
+  font-family: "Noto Sans Mono", monospace;
+  font-size: 40px;
+  background-color: transparent;
+  color: #FFED00;
+  border: none;
+}
+.navegador .inicio:hover {
+  cursor: pointer;
+}
 .navegador .menu_desplegable {
   display: none;
   flex-direction: column;
@@ -185,51 +195,71 @@ body {
   color: #FFED00;
 }
 .container_detalles .titulos_detalles {
-  font-size: 24px;
+  font-size: 30px;
+  padding-bottom: 30px;
 }
 .container_detalles .titulos_detalles h2 {
   font-family: "Noto Sans Mono", monospace;
-  font-size: 40px;
+  font-size: 50px;
   margin-block-start: 0;
   margin-block-end: 0;
 }
-.container_detalles .contenido_arriba {
+.container_detalles .titulos_detalles .subtitulo_detalles {
+  font-family: "Noto Sans Mono", monospace;
+}
+.container_detalles .titulos_detalles .datos_alumno {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  box-sizing: border-box;
-  padding-bottom: 30px;
+  align-items: baseline;
+  font-size: 20px;
 }
-.container_detalles .contenido_arriba .imagen-contenedor {
-  height: 338px;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-start;
+.container_detalles .titulos_detalles .datos_alumno .nombre_estudiante {
+  font-size: 30px;
+  padding-right: 50px;
 }
-.container_detalles .contenido_arriba .imagen-contenedor img {
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+.container_detalles .titulos_detalles .datos_alumno .correo_estudiante {
+  padding-right: 40px;
 }
-.container_detalles .contenido_abajo {
+.container_detalles .titulos_detalles .datos_alumno .curso {
+  padding-right: 10px;
+}
+.container_detalles .titulos_detalles .asignatura {
+  font-size: 20px;
+  font-style: italic;
+}
+.container_detalles .titulos_detalles .palabras_clave {
+  font-size: 16px;
+}
+.container_detalles .contenido_detalles {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  box-sizing: border-box;
-  padding-bottom: 30px;
+  justify-content: space-around;
 }
-.container_detalles .contenido_abajo .imagen-contenedor {
-  height: 338px;
-  overflow: hidden;
+.container_detalles .contenido_detalles .contenido_izquierda {
+  padding-right: 40px;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
 }
-.container_detalles .contenido_abajo .imagen-contenedor img {
+.container_detalles .contenido_detalles .contenido_izquierda .contenedor_img {
+  width: 700px;
+  overflow: hidden;
+}
+.container_detalles .contenido_detalles .contenido_izquierda .contenedor_img img {
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+}
+.container_detalles .contenido_detalles .contenido_derecha {
+  padding-right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.container_detalles .contenido_detalles .contenido_derecha .contenedor_img {
+  width: 700px;
+  overflow: hidden;
+}
+.container_detalles .contenido_detalles .contenido_derecha .contenedor_img img {
+  width: 100%;
 }
 
 footer {
@@ -247,4 +277,4 @@ footer .textos_footer h4 {
 }
 footer img {
   width: 18%;
-}/*# sourceMappingURL=style.css.map */
+}
